@@ -11,19 +11,20 @@ import utilities.ExcelUtility;
 
 public class HomePageTest extends Base
 {
-	@Test
+	@Test(description = "Logout from application")
 	public void verifyUserLogout() throws IOException
 	{
+		HomePagePage homepage;
 		String username = ExcelUtility.getStringData(0,0,"LoginPage");
 		String password = ExcelUtility.getStringData(0,0,"LoginPage");
 		
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUserNameOnUserNameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickOnLoginButton();
+		loginpage.enterUserNameOnUserNameField(username).enterPasswordOnPasswordField(password);
+		//loginpage.enterPasswordOnPasswordField(password);
+		homepage = loginpage.clickOnLoginButton();
 		
-		HomePagePage homepage = new HomePagePage(driver);
+		//HomePagePage homepage = new HomePagePage(driver);
 		homepage.clickAdminButton();
-		homepage.selectLogout();
+		loginpage = homepage.selectLogout();
 	}
 }

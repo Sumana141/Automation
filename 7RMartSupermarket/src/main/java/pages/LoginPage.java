@@ -21,19 +21,22 @@ public class LoginPage
 	//Assertion
 	@FindBy(xpath = "//p[text()='Dashboard']") private WebElement dashboard;
 	
-	public void enterUserNameOnUserNameField(String username)
+	public LoginPage enterUserNameOnUserNameField(String username)
 	{
 		usernamefield.sendKeys(username);
+		return this;
 	}
 	
-	public void enterPasswordOnPasswordField(String password)
+	public LoginPage enterPasswordOnPasswordField(String password)
 	{
 		passwordfield.sendKeys(password);
+		return this;
 	}
 	
-	public void clickOnLoginButton()
+	public HomePagePage clickOnLoginButton()
 	{
 		loginbutton.click();
+		return new HomePagePage(driver);
 	}
 	
 	//Assertion

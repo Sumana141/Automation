@@ -14,7 +14,7 @@ public class ManageNewsPage
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']") private WebElement manageNews;
+	//@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']") private WebElement manageNews;
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']") private WebElement addNews;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']") private WebElement manageNewsAssert; //Assertion
 	@FindBy(xpath="//textarea[@placeholder='Enter the news']") private WebElement enterNews;
@@ -25,24 +25,27 @@ public class ManageNewsPage
 	@FindBy(xpath = "//button[@name='Search']") private WebElement clickSearchButton;
 	@FindBy(xpath = "//h4[text()='Search Manage News']") private WebElement searchNewsAssert; //Assertion
 	
-	public void clickManageNews()
+	/*public void clickManageNews()
 	{
 		manageNews.click();
-	}
+	}*/
 	
-	public void clickAddNews()
+	public ManageNewsPage clickAddNews()
 	{
 		addNews.click();
+		return this;
 	}
 	
-	public void enterNewNews(String newnews)
+	public ManageNewsPage enterNewNews(String newnews)
 	{
 		enterNews.sendKeys(newnews);
+		return this;
 	}
 	
-	public void clickSaveButton()
+	public ManageNewsPage clickSaveButton()
 	{
 		clickSave.click();
+		return this;
 	}
 
 	public boolean displayedAlertManageNews() //Assertion
@@ -50,19 +53,22 @@ public class ManageNewsPage
 		return manageNewsAssert.isDisplayed();
 	}
 		
-	public void clickSearchButton()
+	public ManageNewsPage clickSearchButton()
 	{
 		clickSearch.click();
+		return this;
 	}
 	
-	public void enterNewstobeSearched(String searchnews)
+	public ManageNewsPage enterNewstobeSearched(String searchnews)
 	{
 		enterNewstoSearch.sendKeys(searchnews);
+		return this;
 	}
 	
-	public void verifySearch()
+	public ManageNewsPage verifySearch()
 	{
 		clickSearchButton.click();
+		return this;
 	}
 	
 	public boolean displayedSearchManageNews() //Assertion

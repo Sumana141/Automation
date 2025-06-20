@@ -17,6 +17,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import constants.Constant;
+import utilities.WaitUtility;
+
 public class ManageCategoryPage 
 {
 	public WebDriver driver;
@@ -26,7 +29,7 @@ public class ManageCategoryPage
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category']") private WebElement manageCategory;
+	//@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category']") private WebElement manageCategory;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']") private WebElement newCategory;
 	@FindBy(id = "category") private WebElement category;
 	@FindBy(xpath = "//span[text()='discount']") private WebElement group;
@@ -42,50 +45,64 @@ public class ManageCategoryPage
 	@FindBy(xpath = "//button[@class='btn btn-danger btn-fix' or @class='alert alert-danger alert-dismissible']") private WebElement searchButton;
 	@FindBy(xpath = "//h4[@text()='List Categories']") private WebElement assertSearchCategory; //assertion
 	
-	public void clickManageCategory()
+	/*public void clickManageCategory()
 	{
 		manageCategory.click();
-	}
+	}*/
 	
-	public void clickNewCategory()
+	public ManageCategoryPage clickNewCategory()
 	{
 		newCategory.click();
+		return this;
 	}
 	
-	public void addCategory(String entercategory)
+	public ManageCategoryPage addCategory()
 	{
-		category.sendKeys(entercategory);
+		//category.sendKeys(entercategory);
+		category.sendKeys(Constant.NEWCATEGORYNAME);
+		return this;
 	}
 	
-	public void selectGroup()
+	public ManageCategoryPage selectGroup()
 	{
 		group.click();
+		return this;
 	}
 	
-	public void clickChooseFile() throws AWTException
+	public ManageCategoryPage clickChooseFile() throws AWTException
 	{
-		chooseFile.sendKeys("C:\\Users\\suman\\eclipse-workspace\\7RMartSupermarket\\src\\test\\resources\\Image 1.jpg");
+		chooseFile.sendKeys(Constant.IMAGEFILE1);
+		return this;
 	}
 	
-	public void topMenuRadiobutton()
+	public ManageCategoryPage topMenuRadiobutton()
 	{
 		Actions actions = new Actions(driver);
 		actions.sendKeys(Keys.PAGE_DOWN).perform();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(topMenu)).click();
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		//wait.until(ExpectedConditions.elementToBeClickable(topMenu)).click();
+		WaitUtility wait = new WaitUtility();
+		wait.waitUntilElementToBeClickable(driver, topMenu);		
 		//topMenu.click();
+		return this;
 	}
 	
-	public void leftMenuRadiobutton()
+	public ManageCategoryPage leftMenuRadiobutton()
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(leftMenu)).click();
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		//wait.until(ExpectedConditions.elementToBeClickable(leftMenu)).click();
+		
+		WaitUtility wait = new WaitUtility();
+		wait.waitUntilElementToBeClickable(driver, leftMenu);
+		
 		//leftMenu.click();
+		return this;
 	}
 	
-	public void clickSave()
+	public ManageCategoryPage clickSave()
 	{
 		save.click();
+		return this;
 	}
 	
 	public boolean categoryAdded() //Assertion
@@ -93,19 +110,22 @@ public class ManageCategoryPage
 		return assertCategoryAdd.isDisplayed();
 	}
 	
-	public void clickSearch()
+	public ManageCategoryPage clickSearch()
 	{
 		search.click();
+		return this;
 	}
 	
-	public void enterCategory(String search_cat)
+	public ManageCategoryPage enterCategory(String search_cat)
 	{
 		searchCategory.sendKeys(search_cat);
+		return this;
 	}
 	
-	public void clickSearchButton()
+	public ManageCategoryPage clickSearchButton()
 	{
 		searchButton.click();
+		return this;
 	}
 	
 	public String categorySearched()//assertion

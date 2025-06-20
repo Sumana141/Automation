@@ -1,10 +1,16 @@
 package pages;
 
+import java.lang.invoke.ConstantBootstraps;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import constants.Constant;
+import utilities.PageUtility;
+import utilities.WaitUtility;
 
 public class AdminUsersPage 
 {
@@ -15,7 +21,7 @@ public class AdminUsersPage
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin' and @class='small-box-footer']") private WebElement adminUsers;
+	//@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin' and @class='small-box-footer']") private WebElement adminUsers;
 	@FindBy(xpath = "//a[@onclick='click_button(1)']") private WebElement newAdmin;
 	@FindBy(id = "username") private WebElement adminusername;
 	@FindBy(id = "password") private WebElement adminpassword;
@@ -29,36 +35,46 @@ public class AdminUsersPage
 	@FindBy(xpath = "//button[@value='sr']") private WebElement search;
 	@FindBy(xpath = "//h4[text()='Admin Users']") private WebElement searchAdminAssert; //assertion
 	
-	public void clickAdminUsers()
+	/*public void clickAdminUsers()
 	{
 		adminUsers.click();
-	}
+	}*/
 	
-	public void verifyNewAdmin()
+	public AdminUsersPage verifyNewAdmin()
 	{
 		newAdmin.click();
+		return this;
 	}
 	
-	public void addUserName(String usernameadmin)
+	public AdminUsersPage addUserName(String usernameadmin)
 	{
 		adminusername.sendKeys(usernameadmin);
+		return this;
 	}
 
 	
-	public void addAdminPassword(String passwordadmin)
+	public AdminUsersPage addAdminPassword(String passwordadmin)
 	{
 		adminpassword.sendKeys(passwordadmin);
+		return this;
 	}
 	
-	public void selectUserType()
+	public AdminUsersPage selectUserType()
 	{
-		Select select = new Select(usertypedropdown);
-		select.selectByIndex(2);
+		//Select select = new Select(usertypedropdown);
+		//select.selectByIndex(2);
+		
+		PageUtility page=new PageUtility();
+		page.selectDropdownWithindex(usertypedropdown, Constant.USERTYPE);
+		return this;
 	}
 	
-	public void clickSaveButton()
+	public AdminUsersPage clickSaveButton()
 	{
+		WaitUtility wait=new WaitUtility();
+		wait.waitUntilElementToBeClickable(driver, save);
 		save.click();
+		return this;
 	}
 	
 	public boolean addedAdminUser() //assertion
@@ -66,17 +82,19 @@ public class AdminUsersPage
 		return addAdminAssert.isDisplayed();
 	}
 	
-	public void searchAdminUser(String search)
+	public AdminUsersPage searchAdminUser(String search)
 	{
 		searchButton.click();
 		username.sendKeys(search);
 		Select select = new Select(dropdown);
 		select.selectByIndex(2);
+		return this;
 	}
 	
-	public void search()
+	public AdminUsersPage search()
 	{
 		search.click();
+		return this;
 	}
 	
 	public String searchAdminUsersDisplayed() //assertion
