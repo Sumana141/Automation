@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.HomePagePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
@@ -35,7 +36,7 @@ public class LoginTest extends Base
 		String actual = loginpage.dashboardDisplayed();
 		String expected = "Dashboard"; //it is the text we need to match with actual.
 		//String expected = "Dashboar"; //while we give the text wrongly we will get error message.
-		Assert.assertEquals(actual, expected, "User was unable to login with valid credential.");
+		Assert.assertEquals(actual, expected, Messages.VALIDCREDENTIALERROR);
 		//If it pass that means actual matches with expected.
 	}
 	

@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.AdminUsersPage;
 import pages.HomePagePage;
 import pages.LoginPage;
@@ -45,7 +46,7 @@ public class AdminUsersTest extends Base
 		//adminuserspage.selectUserType();
 		//adminuserspage.clickSaveButton();
 		boolean isAlertSuccessDisplayed = adminuserspage.addedAdminUser(); //Assertion
-		Assert.assertTrue(isAlertSuccessDisplayed, "User unable to add admin user."); //Assertion
+		Assert.assertTrue(isAlertSuccessDisplayed, Messages.NEWADMINUSERERROR); //Assertion
 	}
 	
 	@Test(description = "Search for Admin Users")
@@ -73,6 +74,6 @@ public class AdminUsersTest extends Base
 		//Assertion
 		String actual = adminuserspage.searchAdminUsersDisplayed();
 		String expected = "Admin Users";
-		Assert.assertEquals(actual, expected, "User unable to sear admin user");
+		Assert.assertEquals(actual, expected, Messages.SEARCHADMINUSERERROR);
 	}
 }

@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.HomePagePage;
 import pages.LoginPage;
 import pages.ManageNewsPage;
@@ -36,7 +37,7 @@ public class ManageNewsTest extends Base
 		//managenewspage.enterNewNews(newnews);
 		//managenewspage.clickSaveButton();
 		boolean isManageNewsDisplayed = managenewspage.displayedAlertManageNews(); //Assertion
-		Assert.assertTrue(isManageNewsDisplayed, "User unable to add news."); //Assertion
+		Assert.assertTrue(isManageNewsDisplayed, Messages.UPDATENEWSERROR); //Assertion
 	}
 	
 	@Test(description = "Search for news")
@@ -62,6 +63,7 @@ public class ManageNewsTest extends Base
 		//managenewspage.enterNewstobeSearched(searchnews);
 		//managenewspage.verifySearch();
 		boolean isSearchNewsDisplayed = managenewspage.displayedSearchManageNews(); //Assertion
-		Assert.assertTrue(isSearchNewsDisplayed, "User unable to search news."); //Assertion
+		//Assert.assertTrue(isSearchNewsDisplayed, "User unable to search news."); //Assertion
+		Assert.assertTrue(isSearchNewsDisplayed, Messages.SEARCHNEWSERROR); //Assertion
 	}
 }

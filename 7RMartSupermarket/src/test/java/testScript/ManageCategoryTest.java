@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.HomePagePage;
 import pages.LoginPage;
 import pages.ManageCategoryPage;
@@ -44,7 +45,7 @@ public class ManageCategoryTest extends Base
 		
 		//Assertion
 		boolean isCategoryAdded = managecategorypage.categoryAdded();
-		Assert.assertTrue(isCategoryAdded, "Admin was unable to add the category");
+		Assert.assertTrue(isCategoryAdded, Messages.NEWCATEGORYUPDATEERROR);
 	}
 	
 	@Test(description = "Search for category")
@@ -72,6 +73,6 @@ public class ManageCategoryTest extends Base
 		//Assertion
 		String actual = managecategorypage.categorySearched();
 		String expected = "List Categories";
-		Assert.assertEquals(actual, expected, "User unable to search category.");
+		Assert.assertEquals(actual, expected, Messages.SEARCHCATEGORYERROR);
 	}
 }
