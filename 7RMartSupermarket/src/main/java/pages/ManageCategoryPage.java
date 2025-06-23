@@ -83,7 +83,6 @@ public class ManageCategoryPage
 		//wait.until(ExpectedConditions.elementToBeClickable(topMenu)).click();
 		WaitUtility wait = new WaitUtility();
 		wait.waitUntilElementToBeClickable(driver, topMenu);		
-		//topMenu.click();
 		return this;
 	}
 	
@@ -94,8 +93,6 @@ public class ManageCategoryPage
 		
 		WaitUtility wait = new WaitUtility();
 		wait.waitUntilElementToBeClickable(driver, leftMenu);
-		
-		//leftMenu.click();
 		return this;
 	}
 	

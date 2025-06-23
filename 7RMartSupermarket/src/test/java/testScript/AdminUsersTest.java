@@ -20,8 +20,8 @@ public class AdminUsersTest extends Base
 		HomePagePage homepage;
 		AdminUsersPage adminuserspage;
 		
-		//String username = ExcelUtility.getStringData(0,0,"LoginPage");
-		String username = ExcelUtility.getStringData(10,0,"LoginPage"); //for retry
+		String username = ExcelUtility.getStringData(0,0,"LoginPage");
+		//String username = ExcelUtility.getStringData(10,0,"LoginPage"); //for retry
 		String password = ExcelUtility.getStringData(0,0,"LoginPage");
 		
 		LoginPage loginpage = new LoginPage(driver);

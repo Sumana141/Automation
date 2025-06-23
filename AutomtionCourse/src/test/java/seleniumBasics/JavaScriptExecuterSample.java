@@ -10,8 +10,8 @@ public class JavaScriptExecuterSample extends Base{
 	{
 		driver.navigate().to("https://selenium.qabible.in/simple-form-demo.php");
 		WebElement showMessageButton=driver.findElement(By.xpath("//button[@id='button-one']"));
-		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", showMessageButton);
+		JavascriptExecutor js = (JavascriptExecutor)driver; //This is casting, driver control passed to java script executor.
+		js.executeScript("arguments[0].click();", showMessageButton); // sicne it is first button we need to click, it is given as arguments of 0.
 		
 		//js.executeScript("window.scrollBy(0,350)", ""); //for scroll down
 		js.executeScript("window.scrollBy(0,-350)", ""); //for scroll up

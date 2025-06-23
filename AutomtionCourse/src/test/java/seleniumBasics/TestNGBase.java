@@ -13,8 +13,6 @@ public WebDriver driver; //it is the global variable we declared. (WebDriver is 
 	public void initialiseBrowser()
 	{
 		driver = new ChromeDriver(); //ChromeDriver is the driver class for Chrome. 
-		//driver = new FirefoxDriver();
-		//driver = new EdgeDriver();
 		driver.get("https://www.saucedemo.com/v1/"); //launch an url. (here for demo pjt).
 		driver.manage().window().maximize(); //to maximise the window.
 	}

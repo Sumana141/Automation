@@ -9,8 +9,8 @@ public class ExtentReportUtility
 
 	public synchronized static ExtentReports createExtentReports() 
 	{
-	ExtentSparkReporter reporter = new ExtentSparkReporter("./extent-reports/extent-report.html");
-	reporter.config().setReportName("7RMartSupermarket");
+	ExtentSparkReporter reporter = new ExtentSparkReporter("./extent-reports/extent-report.html"); //folder name and file name given.
+	reporter.config().setReportName("7RMartSupermarket"); //To set report name.
 	extentReports.attachReporter(reporter);
 	extentReports.setSystemInfo("Organization", "Obsqura");
 	extentReports.setSystemInfo("Name", "Sumana"); 

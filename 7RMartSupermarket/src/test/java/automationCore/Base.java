@@ -57,12 +57,13 @@ public class Base
 		wait.implicitWait(driver);
 	}
 	
-	@AfterMethod(alwaysRun=true)
+	
 	/*public void browserClose()
 	{
 		driver.quit();
 	}*/
 	
+	@AfterMethod(alwaysRun=true)
 	public void driverQuit(ITestResult iTestResult) throws IOException
 	{
 	if(iTestResult.getStatus()==ITestResult.FAILURE) //iTestResult is an interface, it manages the life cycle of test result (whether is pass, fail or skip, etc).
